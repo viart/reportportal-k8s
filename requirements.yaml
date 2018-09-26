@@ -1,5 +1,7 @@
 dependencies:
+  - name: consul
+    version: 1.0.6
   - name: mongodb
+    version: 3.4
   - name: elasticsearch
-    repository: docker.elastic.co/elasticsearch/elasticsearch-oss
     version: 6.1.1

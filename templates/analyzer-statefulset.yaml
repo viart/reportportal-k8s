@@ -15,9 +15,12 @@ spec:
         component: reportportal-analyzer
     spec:
       containers:
-      - image: "{{ .Values.registry }}reportportal/service-analyzer:{{ .Values.analyzer.version }}"
+      -  image: "{{ .Values.registry }}reportportal/service-analyzer:{{ .Values.analyzer.version }}"
         name: analyzer
         ports:
         - containerPort: 8080
           protocol: TCP
+        env:
+        - name: ES_HOSTS
+          value: http://elasticsearch:9200
 {{ include "nodeSelector" . | indent 8 }}

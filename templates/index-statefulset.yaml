@@ -15,14 +15,14 @@ spec:
         component: reportportal-index
     spec:
       containers:
-      - env:
-        - name: RP_PROXY_CONSUL
-          value: "true"
-        - name: RP_SERVER_PORT
-          value: "8090"
-        image: "reportportal/service-index:{{ .Values.index.version }}"
-        name: index
-        ports:
-        - containerPort: 8090
-          protocol: TCP
+        - name: index
+          image: "reportportal/service-index:{{ .Values.index.version }}"
+          ports:
+          - containerPort: 8090
+            protocol: TCP
+          env:
+          - name: RP_PROXY_CONSUL
+            value: true
+          - name: RP_SERVER_PORT
+            value: 8090
 {{ include "nodeSelector" . | indent 8 }}

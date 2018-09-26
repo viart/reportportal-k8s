@@ -24,18 +24,25 @@ api:
 ui:
   version: 4.1.0
 
-# persistence configuration for elasticsearch, mongodb & consul
-persistence:
-  enabled: false
-  mongodb:
-    accessModes:
-      - ReadWriteOnce
-    size: 10Gi
-  elasticsearch:
-    accessModes:
-      - ReadWriteOnce
-    size: 10Gi
-  registry:
-    accessModes:
-      - ReadWriteOnce
-    size: 10Gi
+mongodb:
+  persistence:
+    enabled: true
+    # accessModes:
+    #   - ReadWriteOnce
+    # size: 10Gi
+
+elasticsearch:
+  persistence:
+    enabled: true
+    # accessModes:
+    #   - ReadWriteOnce
+    # size: 10Gi
+
+consul:
+  persistence:
+    enabled: true
+    # accessModes:
+    #   - ReadWriteOnce
+    # size: 10Gi
+
+  Name: registry

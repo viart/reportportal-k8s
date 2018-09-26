@@ -15,14 +15,16 @@ spec:
         component: reportportal-api
     spec:
       containers:
-      - env:
-        - name: "JAVA_OPTS"
-          value: "-Xmx1g -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp"
-        - name: "RP_PROFILES"
-          value: "docker"
-        image: "reportportal/service-api:{{ .Values.api.version }}"
-        name: api
-        ports:
-        - containerPort: 8080
-          protocol: TCP
+        - name: api
+          image: "reportportal/service-api:{{ .Values.api.version }}"
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          env:
+          - name: JAVA_OPTS
+            value: "-Xmx1g -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp"
+          - name: RP_PROFILES
+            value: "docker"
+          # - name: RP_MONGO_URI
+          #   value: mongodb://localhost:27017
 {{ include "nodeSelector" . | indent 8 }}

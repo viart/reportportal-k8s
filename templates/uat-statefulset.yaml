@@ -15,14 +15,14 @@ spec:
         component: reportportal-uat
     spec:
       containers:
-      - env:
-        - name: RP_PROFILES
-          value: docker
-        - name: RP_SESSION_LIVE
-          value: "86400"
-        image: "reportportal/service-authorization:{{ .Values.authorization.version }}"
-        name: uat
-        ports:
-        - containerPort: 8080
-          protocol: TCP
+        - name: uat
+          image: "reportportal/service-authorization:{{ .Values.authorization.version }}"
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          - env:
+            - name: RP_PROFILES
+              value: docker
+            - name: RP_SESSION_LIVE
+              value: 86400
 {{ include "nodeSelector" . | indent 8 }}
