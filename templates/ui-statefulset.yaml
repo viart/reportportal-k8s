@@ -22,8 +22,7 @@ spec:
           value: urlprefix-/ui opts strip=/ui
         - name: RP_SERVER.PORT
           value: "8080"
-#        image: "{{ .Values.registry }}/reportportal/service-ui:4.1.0"
-        image: "{{ .Values.registry }}reportportal/service-ui:4.1.0"
+        image: "reportportal/service-ui:{{ .Values.ui.version }}"
         name: ui
         ports:
         - containerPort: 8080

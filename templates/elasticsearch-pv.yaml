@@ -1,4 +1,4 @@
-{{- if .Values.persistence.elasticsearch.enabled -}}
+{{- if .Values.elasticsearch.persistence -}}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -8,5 +8,10 @@ spec:
   claimRef:
     namespace: default
     name: reportportal-elasticsearch
-{{ toYaml .Values.persistence.elasticsearch.spec | indent 2 }}
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: {{ .Values.elasticsearch.persistence }}
+  hostPath:
+    path: /mnt/data/elastic
 {{- end -}}

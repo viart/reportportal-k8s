@@ -25,13 +25,13 @@ spec:
         env:
         - name: CONSUL_LOCAL_CONFIG
           value: '{"leave_on_terminate": true}'
-        image: "{{ .Values.registry }}consul:1.0.6"
+        image: "consul:1.0.6"
         name: registry
         ports:
         - containerPort: 8500
           protocol: TCP
         resources: {}
-        {{ if .Values.persistence.registry.enabled -}}
+{{ if .Values.persistence.registry.enabled -}}
         volumeMounts:
         - mountPath: /consul/data
           name: reportportal-registry

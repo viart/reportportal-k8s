@@ -20,8 +20,7 @@ spec:
           value: "-Xmx1g -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp"
         - name: "RP_PROFILES"
           value: "docker"
-        #image: "{{ .Values.registry }}/reportportal/service-api:4.1.0"
-        image: "{{ .Values.registry }}reportportal/service-api:4.1.0"
+        image: "reportportal/service-api:{{ .Values.api.version }}"
         name: api
         ports:
         - containerPort: 8080

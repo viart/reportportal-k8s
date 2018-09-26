@@ -1,0 +1,40 @@
+{{- if .Values.persistence.enabled -}}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: reportportal-registry
+  labels: {{ include "labels" . | indent 4 }}
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.persistence.registry.size }}
+  volumeName: reportportal-registry
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: reportportal-elasticsearch
+  labels: {{ include "labels" . | indent 4 }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.persistence.elasticsearch.size }}
+  volumeName: reportportal-elasticsearch
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: reportportal-mongodb
+  labels: {{ include "labels" . | indent 4 }}
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ .Values.persistence.mongodb.size }}
+  volumeName: reportportal-mongodb
+{{- end -}}

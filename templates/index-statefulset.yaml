@@ -20,8 +20,7 @@ spec:
           value: "true"
         - name: RP_SERVER_PORT
           value: "8090"
-#        image: "{{ .Values.registry }}/reportportal/service-index:4.0.0"
-        image: "{{ .Values.registry }}reportportal/service-index:4.0.0"
+        image: "reportportal/service-index:{{ .Values.index.version }}"
         name: index
         ports:
         - containerPort: 8090

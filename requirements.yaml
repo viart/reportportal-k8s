@@ -1,0 +1,5 @@
+dependencies:
+  - name: mongodb
+  - name: elasticsearch
+    repository: docker.elastic.co/elasticsearch/elasticsearch-oss
+    version: 6.1.1

@@ -1,4 +1,4 @@
-{{- if .Values.persistence.mongodb.enabled -}}
+{{- if .Values.mongodb.persistence -}}
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -8,5 +8,10 @@ spec:
   claimRef:
     namespace: default
     name: reportportal-mongodb
-{{ toYaml .Values.persistence.mongodb.spec | indent 2 }}
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: {{ .Values.persistence.mongodb.size }}
+  hostPath:
+    path: /mnt/data/db
 {{- end -}}
