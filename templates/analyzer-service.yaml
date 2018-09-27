@@ -14,16 +14,16 @@ spec:
   type: ClusterIP
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: analyzer
   labels: {{ include "labels" . | indent 4 }}
 spec:
-  replicas: 1
   selector:
     matchLabels:
       component: reportportal-analyzer
   serviceName: analyzer
+  replicas: 1
   template:
     metadata:
       labels:

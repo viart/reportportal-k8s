@@ -1,0 +1,12 @@
+dependencies:
+- name: consul
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 3.3.0
+- name: mongodb
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 4.3.6
+- name: elasticsearch
+  repository: https://kubernetes-charts-incubator.storage.googleapis.com/
+  version: 1.8.1
+digest: sha256:ca99ea73cb702ded70e7dcfbd9c10799ac7354ffbea821ba94630218e3cff604
+generated: 2018-09-27T13:02:10.149441113+02:00

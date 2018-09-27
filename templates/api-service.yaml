@@ -14,7 +14,7 @@ spec:
   type: ClusterIP
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: api
   labels: {{ include "labels" . | indent 4 }}
@@ -23,6 +23,7 @@ spec:
     matchLabels:
       component: reportportal-api
   replicas: 1
+  serviceName: api
   template:
     metadata:
       labels:

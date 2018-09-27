@@ -14,15 +14,15 @@ spec:
   type: ClusterIP
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: uat
   labels: {{ include "labels" . | indent 4 }}
 spec:
-  replicas: 1
   selector:
     matchLabels:
       component: reportportal-uat
+  replicas: 1
   serviceName: uat
   template:
     metadata:
