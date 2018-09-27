@@ -12,3 +12,32 @@ spec:
   selector:
     component: reportportal-index
   type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: index
+  labels: {{ include "labels" . | indent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: reportportal-index
+  serviceName: index-0
+  template:
+    metadata:
+      labels:
+        component: reportportal-index
+    spec:
+      containers:
+      - name: index
+        image: "reportportal/service-index:{{ .Values.index.version }}"
+        ports:
+        - containerPort: 8090
+          protocol: TCP
+        env:
+        - name: RP_PROXY_CONSUL
+          value: true
+        - name: RP_SERVER_PORT
+          value: 8090
+{{ include "nodeSelector" . | indent 8 }}

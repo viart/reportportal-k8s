@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: analyzer-0
+  name: analyzer
   labels: {{ include "labels" . | indent 4 }}
 spec:
   ports:
@@ -12,3 +12,30 @@ spec:
   selector:
     component: reportportal-analyzer
   type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analyzer
+  labels: {{ include "labels" . | indent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: reportportal-analyzer
+  serviceName: analyzer
+  template:
+    metadata:
+      labels:
+        component: reportportal-analyzer
+    spec:
+      containers:
+      - name: analyzer
+        image: "reportportal/service-analyzer:{{ .Values.analyzer.version }}"
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        env:
+        - name: ES_HOSTS
+          value: http://elasticsearch:9200
+{{ include "nodeSelector" . | indent 8 }}

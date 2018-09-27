@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: uat-0
+  name: uat
   labels: {{ include "labels" . | indent 4 }}
 spec:
   ports:
@@ -12,3 +12,32 @@ spec:
   selector:
     component: reportportal-uat
   type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uat
+  labels: {{ include "labels" . | indent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: reportportal-uat
+  serviceName: uat
+  template:
+    metadata:
+      labels:
+        component: reportportal-uat
+    spec:
+      containers:
+      - name: uat
+        image: "reportportal/service-authorization:{{ .Values.authorization.version }}"
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        - env:
+          - name: RP_PROFILES
+            value: docker
+          - name: RP_SESSION_LIVE
+            value: 86400
+{{ include "nodeSelector" . | indent 8 }}
