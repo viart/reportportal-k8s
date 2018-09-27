@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: reportportal-gateway-ingress
+  name: reportportal-ingress
   labels: {{ include "labels" . | indent 4 }}
   annotations:
     {{- range $key, $value := .Values.ingress.annotations }}
@@ -9,14 +9,14 @@ metadata:
     {{- end }}
 spec:
   rules:
-  {{- range $host := .Values.ingress.hosts }}
+{{- range $host := .Values.ingress.hosts }}
   - host: {{ $host }}
     http:
       paths:
       - backend:
           serviceName: gateway
           servicePort: 9999
-  {{- end -}}
+{{- end -}}
 {{- if .Values.ingress.tls }}
   tls:
 {{ toYaml .Values.ingress.tls | indent 4 }}

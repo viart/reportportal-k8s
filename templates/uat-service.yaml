@@ -35,9 +35,9 @@ spec:
         ports:
         - containerPort: 8080
           protocol: TCP
-        - env:
-          - name: RP_PROFILES
-            value: docker
-          - name: RP_SESSION_LIVE
-            value: 86400
+        env:
+        - name: RP_PROFILES
+          value: "docker"
+        - name: RP_SESSION_LIVE
+          value: "86400"
 {{ include "nodeSelector" . | indent 8 }}

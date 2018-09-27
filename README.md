@@ -16,6 +16,12 @@ The Helm chart installation consist of the following .yaml files:
 charts.
 - A `templates/_helpers.tpl` file which contains helper templates.
 
+    ```
+        helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+        helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com/
+    ```
+
+
 You can deploy this chart with `helm install ./<project folder>`.
 
 Commando to create those folders:

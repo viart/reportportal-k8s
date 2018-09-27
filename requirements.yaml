@@ -1,7 +1,11 @@
 dependencies:
-  - name: consul
-    version: 1.0.6
-  - name: mongodb
-    version: 3.4
-  - name: elasticsearch
-    version: 6.1.1
+- name: consul
+  version: 3.x.x
+  repository: "@stable"
+- name: mongodb
+  version: 4.x.x
+  repository: "@stable"
+- name: elasticsearch
+  version: x.x.x
+  # version: 6.1.1
+  repository: "@incubator"

@@ -15,7 +15,7 @@ spec:
     targetPort: 9999
   selector:
     component: reportportal-gateway
-  type: ClusterIP
+  type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -43,9 +43,9 @@ spec:
           protocol: TCP
         env:
         - name: FABIO_PROXY_ADDR
-          value: :9999;rt=300s;wt=300s
+          value: ":9999;rt=300s;wt=300s"
         - name: FABIO_REGISTRY_CONSUL_ADDR
-          value: registry:8500
+          value: "registry:8500"
         - name: FABIO_REGISTRY_CONSUL_REGISTER_NAME
-          value: gateway
+          value: "gateway"
 {{ include "nodeSelector" . | indent 8 }}

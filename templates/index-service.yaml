@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: index-0
+  name: index
   labels: {{ include "labels" . | indent 4 }}
 spec:
   ports:
@@ -19,11 +19,10 @@ metadata:
   name: index
   labels: {{ include "labels" . | indent 4 }}
 spec:
-  replicas: 1
   selector:
     matchLabels:
       component: reportportal-index
-  serviceName: index-0
+  replicas: 1
   template:
     metadata:
       labels:
@@ -37,7 +36,7 @@ spec:
           protocol: TCP
         env:
         - name: RP_PROXY_CONSUL
-          value: true
+          value: "true"
         - name: RP_SERVER_PORT
-          value: 8090
+          value: "8090"
 {{ include "nodeSelector" . | indent 8 }}

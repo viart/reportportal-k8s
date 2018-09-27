@@ -37,5 +37,5 @@ spec:
           protocol: TCP
         env:
         - name: ES_HOSTS
-          value: http://elasticsearch:9200
+          value: "http://elasticsearch:9200"
 {{ include "nodeSelector" . | indent 8 }}

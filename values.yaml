@@ -30,6 +30,8 @@ mongodb:
     # accessModes:
     #   - ReadWriteOnce
     # size: 10Gi
+  fullnameOverride: mongodb
+  usePassword: false
 
 elasticsearch:
   persistence:
@@ -37,6 +39,13 @@ elasticsearch:
     # accessModes:
     #   - ReadWriteOnce
     # size: 10Gi
+  fullnameOverride: elasticsearch
+  master:
+    replicas: 1
+  client:
+    replicas: 1
+  data:
+    replicas: 1
 
 consul:
   persistence:
@@ -45,4 +54,5 @@ consul:
     #   - ReadWriteOnce
     # size: 10Gi
 
-  Name: registry
+  fullnameOverride: registry
+  Replicas: 1

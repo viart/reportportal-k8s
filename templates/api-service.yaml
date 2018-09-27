@@ -19,11 +19,10 @@ metadata:
   name: api
   labels: {{ include "labels" . | indent 4 }}
 spec:
-  replicas: 1
   selector:
     matchLabels:
       component: reportportal-api
-  serviceName: api
+  replicas: 1
   template:
     metadata:
       labels:
