@@ -11,10 +11,10 @@ spec:
     targetPort: 8090
   selector:
     component: reportportal-index
-  type: ClusterIP
+  type: NodePort
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: index
   labels: {{ include "labels" . | indent 4 }}

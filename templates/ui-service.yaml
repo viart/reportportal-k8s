@@ -14,7 +14,7 @@ spec:
   type: NodePort
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: ui
   labels: {{ include "labels" . | indent 4 }}
@@ -36,8 +36,6 @@ spec:
         - containerPort: 8080
           protocol: TCP
         env:
-        - name: RP_PROFILES
-          value: "docker"
         - name: RP_CONSUL.ADDRESS
           value: "registry:8500"
         - name: RP_CONSUL.TAGS

@@ -11,10 +11,10 @@ spec:
     targetPort: 8080
   selector:
     component: reportportal-uat
-  type: ClusterIP
+  type: NodePort
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: uat
   labels: {{ include "labels" . | indent 4 }}

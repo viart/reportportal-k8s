@@ -1,21 +1,36 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: reportportal-ingress
+  name: ui-ingress
   labels: {{ include "labels" . | indent 4 }}
   annotations:
-    {{- range $key, $value := .Values.ingress.annotations }}
-      {{ $key }}: {{ $value | quote }}
-    {{- end }}
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
 {{- range $host := .Values.ingress.hosts }}
   - host: {{ $host }}
     http:
       paths:
-      - backend:
-          serviceName: gateway
-          servicePort: 9999
+      - path: /ui
+        backend:
+          serviceName: ui
+          servicePort: 8080
+      - path: /uat
+        backend:
+          serviceName: uat
+          servicePort: 8080
+      - path: /api
+        backend:
+          serviceName: api
+          servicePort: 8080
+      - path: /analyzer
+        backend:
+          serviceName: analyzer
+          servicePort: 8080
+      - path: /
+        backend:
+          serviceName: index
+          servicePort: 8090
 {{- end -}}
 {{- if .Values.ingress.tls }}
   tls:

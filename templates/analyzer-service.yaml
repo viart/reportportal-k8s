@@ -11,10 +11,10 @@ spec:
     targetPort: 8080
   selector:
     component: reportportal-analyzer
-  type: ClusterIP
+  type: NodePort
 ---
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: analyzer
   labels: {{ include "labels" . | indent 4 }}
