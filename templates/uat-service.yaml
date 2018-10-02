@@ -13,7 +13,7 @@ spec:
     component: reportportal-uat
   type: NodePort
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: uat
@@ -32,6 +32,10 @@ spec:
       containers:
       - name: uat
         image: "reportportal/service-authorization:{{ .Values.authorization.version }}"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
         ports:
         - containerPort: 8080
           protocol: TCP

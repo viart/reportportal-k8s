@@ -13,7 +13,7 @@ spec:
     component: reportportal-ui
   type: NodePort
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: ui
@@ -32,14 +32,26 @@ spec:
       containers:
       - name: ui
         image: "reportportal/service-ui:{{ .Values.ui.version }}"
+        readynessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /info
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
         ports:
         - containerPort: 8080
           protocol: TCP
         env:
-        - name: RP_CONSUL.ADDRESS
-          value: "registry:8500"
-        - name: RP_CONSUL.TAGS
-          value: "urlprefix-/ui opts strip=/ui"
+        # - name: RP_CONSUL.ADDRESS
+        #   value: "registry:8500"
+        # - name: RP_CONSUL.TAGS
+        #   value: "urlprefix-/ui opts strip=/ui"
         - name: RP_SERVER.PORT
           value: "8080"
 {{ include "nodeSelector" . | indent 8 }}

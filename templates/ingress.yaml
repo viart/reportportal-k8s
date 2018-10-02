@@ -1,11 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ui-ingress
+  name: rp-ingress
   labels: {{ include "labels" . | indent 4 }}
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
 spec:
+  # backend:
+  #   serviceName: index
+  #   servicePort: 8080
   rules:
 {{- range $host := .Values.ingress.hosts }}
   - host: {{ $host }}
@@ -15,22 +21,18 @@ spec:
         backend:
           serviceName: ui
           servicePort: 8080
-      - path: /uat
-        backend:
-          serviceName: uat
-          servicePort: 8080
-      - path: /api
-        backend:
-          serviceName: api
-          servicePort: 8080
-      - path: /analyzer
-        backend:
-          serviceName: analyzer
-          servicePort: 8080
-      - path: /
-        backend:
-          serviceName: index
-          servicePort: 8090
+      # - path: /uat/*
+      #   backend:
+      #     serviceName: uat
+      #     servicePort: 8080
+      # - path: /api/*
+      #   backend:
+      #     serviceName: api
+      #     servicePort: 8080
+      # - path: /analyzer/*
+      #   backend:
+      #     serviceName: analyzer
+      #     servicePort: 8080
 {{- end -}}
 {{- if .Values.ingress.tls }}
   tls:

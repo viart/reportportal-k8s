@@ -10,19 +10,19 @@ nodeSelector:
     reportportal: true
 
 index:
-  version: 4.0.0
+  version: 4.2.0
 
 authorization:
-  version: 4.1.0
+  version: 4.2.0
 
 analyzer:
-  version: 4.1.0
+  version: 4.2.0
 
 api:
-  version: 4.1.0
+  version: 4.2.0
 
 ui:
-  version: 4.1.0
+  version: 4.2.0
 
 mongodb:
   persistence:
@@ -41,9 +41,9 @@ elasticsearch:
     # size: 10Gi
   fullnameOverride: elasticsearch
   master:
-    replicas: 1
+    replicas: 2
   client:
-    replicas: 1
+    replicas: 2
   data:
     replicas: 1
 

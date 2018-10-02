@@ -13,7 +13,7 @@ spec:
     component: reportportal-api
   type: NodePort
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: api
@@ -32,6 +32,12 @@ spec:
       containers:
       - name: api
         image: "reportportal/service-api:{{ .Values.api.version }}"
+        livenessProbe:
+          httpGet:
+            path: /api/v1/admin/health
+            port: 8080
+          initialDelaySeconds: 25
+          periodSeconds: 15
         ports:
         - containerPort: 8080
           protocol: TCP

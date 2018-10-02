@@ -13,7 +13,7 @@ spec:
     component: reportportal-analyzer
   type: NodePort
 ---
-apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: analyzer
@@ -32,6 +32,18 @@ spec:
       containers:
       - name: analyzer
         image: "reportportal/service-analyzer:{{ .Values.analyzer.version }}"
+        readynessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /info
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
         ports:
         - containerPort: 8080
           protocol: TCP
