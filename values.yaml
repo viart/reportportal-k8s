@@ -55,6 +55,8 @@ elasticsearch:
 
 nginx-ingress:
   controller:
-    defaultBackendService: index
+    defaultBackendService: default/index
   rbac:
     create: true
+  defaultBackend:
+    enabled: false
