@@ -1,12 +1,12 @@
 dependencies:
-- name: consul
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  version: 3.3.0
 - name: mongodb
-  repository: https://kubernetes-charts.storage.googleapis.com/
-  version: 4.3.6
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: 4.3.10
+- name: nginx-ingress
+  repository: https://kubernetes-charts.storage.googleapis.com
+  version: 0.28.3
 - name: elasticsearch
   repository: https://kubernetes-charts-incubator.storage.googleapis.com/
-  version: 1.8.1
-digest: sha256:ca99ea73cb702ded70e7dcfbd9c10799ac7354ffbea821ba94630218e3cff604
-generated: 2018-09-27T13:02:10.149441113+02:00
+  version: 1.8.2
+digest: sha256:38e6386449256845594fb60fd63247b623e8695dfa13c9dfb524ab98a48c95ff
+generated: 2018-10-05T15:18:17.01082+02:00

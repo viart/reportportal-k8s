@@ -1,11 +1,10 @@
 dependencies:
-- name: consul
-  version: 3.x.x
-  repository: "@stable"
 - name: mongodb
-  version: 4.x.x
+  version: 4.3.x
+  repository: "@stable"
+- name: nginx-ingress
+  version: 0.28.x
   repository: "@stable"
 - name: elasticsearch
-  version: x.x.x
-  # version: 6.1.1
+  version: 1.8.x
   repository: "@incubator"

@@ -9,13 +9,13 @@ metadata:
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
 spec:
-  # backend:
-  #   serviceName: index
-  #   servicePort: 8080
+  backend:
+    serviceName: ui
+    servicePort: 8080
   rules:
-{{- range $host := .Values.ingress.hosts }}
-  - host: {{ $host }}
-    http:
+# {{- range $host := .Values.ingress.hosts }}
+  # - host: {{ $host }}
+  - http:
       paths:
       - path: /ui
         backend:
@@ -33,7 +33,7 @@ spec:
       #   backend:
       #     serviceName: analyzer
       #     servicePort: 8080
-{{- end -}}
+# {{- end -}}
 {{- if .Values.ingress.tls }}
   tls:
 {{ toYaml .Values.ingress.tls | indent 4 }}
