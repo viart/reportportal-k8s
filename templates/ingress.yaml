@@ -21,10 +21,10 @@ spec:
         backend:
           serviceName: ui
           servicePort: 8080
-      # - path: /uat
-      #   backend:
-      #     serviceName: uat
-      #     servicePort: 8080
+      - path: /uat
+        backend:
+          serviceName: uat
+          servicePort: 8080
       - path: /api
         backend:
           serviceName: api

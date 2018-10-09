@@ -25,19 +25,12 @@ ui:
   version: 4.3.0
 
 mongodb:
-  # image:
-  #   # repository: mongo
-  #   tag: 3.4.10-r0
   persistence:
     enabled: true
   mongodbDatabase: reportportal
     # accessModes:
     #   - ReadWriteOnce
     # size: 10Gi
-  nameOverride: mongodb
-  fullnameOverride: mongodb
-
-  # usePassword: false
 
 elasticsearch:
   persistence:

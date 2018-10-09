@@ -46,6 +46,6 @@ spec:
           value: "-Xmx1g -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp"
         - name: RP_PROFILES
           value: "docker"
-        # - name: RP_MONGO_URI
-        #   value: mongodb://localhost:27017
+        - name: RP_MONGO_URI
+          value: "mongodb://{{ .Release.Name }}-mongodb:27017"
 {{ include "nodeSelector" . | indent 8 }}

@@ -50,6 +50,8 @@ spec:
         env:
         - name: RP_PROFILES
           value: "docker"
+        - name: RP_MONGO_URI
+          value: "mongodb://{{ .Release.Name }}-mongodb:27017"
         - name: RP_SESSION_LIVE
           value: "86400"
 {{ include "nodeSelector" . | indent 8 }}
