@@ -25,13 +25,19 @@ ui:
   version: 4.3.0
 
 mongodb:
+  # image:
+  #   # repository: mongo
+  #   tag: 3.4.10-r0
   persistence:
     enabled: true
+  mongodbDatabase: reportportal
     # accessModes:
     #   - ReadWriteOnce
     # size: 10Gi
+  nameOverride: mongodb
   fullnameOverride: mongodb
-  usePassword: false
+
+  # usePassword: false
 
 elasticsearch:
   persistence:
@@ -47,11 +53,11 @@ elasticsearch:
   data:
     replicas: 1
 
-# consul:
-#   persistence:
-#     enabled: false
-#   fullnameOverride: registry
-#   Replicas: 1
+consul:
+  persistence:
+    enabled: false
+  fullnameOverride: registry
+  Replicas: 1
 
 nginx-ingress:
   controller:
