@@ -7,9 +7,9 @@ dependencies:
   version: 0.4.18
 - name: nginx-ingress
   repository: https://kubernetes-charts.storage.googleapis.com
-  version: 0.28.3
+  version: 0.29.0
 - name: elasticsearch
   repository: https://kubernetes-charts-incubator.storage.googleapis.com/
   version: 1.8.2
-digest: sha256:51045ad07922ee420c710f17796a1070e665254e45428e109cc3587648b368d7
-generated: 2018-10-09T10:43:31.3013+02:00
+digest: sha256:b96a97a02f889ec7584b6fc50dad0d93dbfea15af8e446719edae0ca3dfe98c5
+generated: 2018-10-15T14:01:10.729273+02:00

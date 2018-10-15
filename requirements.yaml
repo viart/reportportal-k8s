@@ -6,7 +6,7 @@ dependencies:
   version: 0.4.18
   repository: "@stable"
 - name: nginx-ingress
-  version: 0.28.x
+  version: 0.29.x
   repository: "@stable"
 - name: elasticsearch
   version: 1.8.x
