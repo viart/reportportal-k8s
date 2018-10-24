@@ -22,11 +22,11 @@ api:
   version: 4.3.3
 
 ui:
-  version: 4.3.0
+  version: 4.3.5
 
 mongodb:
   persistence:
-    enabled: true
+    enabled: false
   mongodbDatabase: reportportal
     # accessModes:
     #   - ReadWriteOnce
@@ -52,10 +52,24 @@ consul:
   fullnameOverride: registry
   Replicas: 1
 
-nginx-ingress:
-  controller:
-    defaultBackendService: default/index
-  rbac:
-    create: true
-  defaultBackend:
+traefik:
+  persistence:
     enabled: false
+  fullnameOverride: gateway
+  rbac:
+    enabled: true
+  kvprovider:
+    consulCatalog:
+      endpoint: registry:8500
+      watch: true
+      prefix: "traefik"
+  dashboard:
+    enabled: false
+
+# nginx-ingress:
+#   controller:
+#     defaultBackendService: default/index
+#   rbac:
+#     create: true
+#   defaultBackend:
+#     enabled: false

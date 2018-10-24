@@ -5,11 +5,11 @@ dependencies:
 - name: mongodb
   repository: https://kubernetes-charts.storage.googleapis.com
   version: 0.4.18
-- name: nginx-ingress
+- name: traefik
   repository: https://kubernetes-charts.storage.googleapis.com
-  version: 0.29.0
+  version: 1.52.2
 - name: elasticsearch
   repository: https://kubernetes-charts-incubator.storage.googleapis.com/
   version: 1.8.2
-digest: sha256:b96a97a02f889ec7584b6fc50dad0d93dbfea15af8e446719edae0ca3dfe98c5
-generated: 2018-10-15T14:01:10.729273+02:00
+digest: sha256:ce75fc34f4a5877863586c7ba68468b5da38c5d53fd28600e5e19d090425270c
+generated: 2018-10-24T11:36:54.933423+02:00

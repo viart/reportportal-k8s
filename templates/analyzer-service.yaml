@@ -29,6 +29,7 @@ spec:
       labels:
         component: reportportal-analyzer
     spec:
+      hostname: analyzer
       containers:
       - name: analyzer
         image: "reportportal/service-analyzer:{{ .Values.analyzer.version }}"

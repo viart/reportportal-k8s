@@ -29,6 +29,7 @@ spec:
       labels:
         component: reportportal-uat
     spec:
+      hostname: uat
       containers:
       - name: uat
         image: "reportportal/service-authorization:{{ .Values.authorization.version }}"
@@ -36,13 +37,13 @@ spec:
           httpGet:
             path: /info
             port: 8080
-          initialDelaySeconds: 10
+          initialDelaySeconds: 15
           periodSeconds: 5
         livenessProbe:
           httpGet:
             path: /health
             port: 8080
-          initialDelaySeconds: 15
+          initialDelaySeconds: 25
           periodSeconds: 20
         ports:
         - containerPort: 8080

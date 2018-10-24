@@ -29,6 +29,7 @@ spec:
       labels:
         component: reportportal-api
     spec:
+      hostname: api
       containers:
       - name: api
         image: "reportportal/service-api:{{ .Values.api.version }}"

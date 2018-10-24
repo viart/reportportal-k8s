@@ -29,6 +29,7 @@ spec:
       labels:
         component: reportportal-ui
     spec:
+      hostname: ui
       containers:
       - name: ui
         image: "reportportal/service-ui:{{ .Values.ui.version }}"
@@ -50,8 +51,8 @@ spec:
         env:
         # - name: RP_CONSUL_ADDRESS
         #   value: ""
-        # - name: RP_CONSUL.TAGS
-        #   value: "urlprefix-/ui opts strip=/ui"
+        - name: RP_CONSUL.TAGS
+          value: "urlprefix-/ui opts strip=/ui"
         - name: RP_SERVER_PORT
           value: "8080"
 {{ include "nodeSelector" . | indent 8 }}

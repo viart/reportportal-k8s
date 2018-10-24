@@ -22,6 +22,13 @@ charts.
     ```
 
 
+kubectl edit configmap gateway
+```
+    [consulCatalog]
+        endpoint = "registry:8500"
+```
+
+
 You can deploy this chart with `helm install ./<project folder>`.
 
 Commando to create those folders:

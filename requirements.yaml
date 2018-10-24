@@ -1,12 +1,12 @@
 dependencies:
 - name: consul
-  repository: "@stable"
   version: 3.4.x
+  repository: "@stable"
 - name: mongodb
   version: 0.4.18
   repository: "@stable"
-- name: nginx-ingress
-  version: 0.29.x
+- name: traefik
+  version: 1.52.x
   repository: "@stable"
 - name: elasticsearch
   version: 1.8.x
